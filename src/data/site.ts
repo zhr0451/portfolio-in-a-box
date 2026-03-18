@@ -30,7 +30,7 @@ export const site = {
       en: "I'm a student game designer currently working as a system administrator. In my free time, I play TTRPGs, do extreme sports, and learn DevOps.",
       ru: "Я студент-геймдизайнер, который сейчас работает системным администратором. В свободное время играю в НРИ, занимаюсь экстремальным спортом и изучаю DevOps.",
     },
-    photo: "/media/photo_2026-03-15_19-53-33.jpg",
+    photo: "media/photo_2026-03-15_19-53-33.jpg",
     availability: {
       en: "Currently available for hire",
       ru: "Сейчас открыт для предложений",
@@ -38,13 +38,13 @@ export const site = {
     footerYear: "2026",
   },
   actions: [
-    { label: "GitHub", href: "https://github.com/zhr0451", asset: "/buttons/GitHub Button.svg" },
-    { label: "itch.io", href: "https://svaika-games.itch.io/", asset: "/buttons/Itch Button.svg" },
-    { label: "Telegram", href: "https://t.me/wild1honeypie", asset: "/buttons/Telegram Button.svg" },
+    { label: "GitHub", href: "https://github.com/zhr0451", asset: "buttons/GitHub Button.svg" },
+    { label: "itch.io", href: "https://svaika-games.itch.io/", asset: "buttons/Itch Button.svg" },
+    { label: "Telegram", href: "https://t.me/wild1honeypie", asset: "buttons/Telegram Button.svg" },
     {
       label: "Mail",
       href: "mailto:1samokhvalov.zs@gmail.com",
-      asset: "/buttons/Email Button.svg",
+      asset: "buttons/Email Button.svg",
     },
   ],
   experiences: [

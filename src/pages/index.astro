@@ -4,13 +4,14 @@ import { site } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
 
 const localeOptions = ["ru", "en"] as const;
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={site.meta.title} description={site.meta.description} locale="en">
   <main class="portfolio-shell">
     <section class="panel hero-panel">
       <div class="photo-card">
-        <img src={site.person.photo} alt="Portrait of Zakhar Samokhvalov" loading="eager" decoding="async" />
+        <img src={`${baseUrl}${site.person.photo}`} alt="Portrait of Zakhar Samokhvalov" loading="eager" decoding="async" />
       </div>
       <div class="hero-content">
         <div class="panel-heading">
