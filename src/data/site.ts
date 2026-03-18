@@ -1,8 +1,8 @@
 export const site = {
   meta: {
-    title: "Zakhar Samokhvalov | Portfolio",
+    title: "Zakhar Samokhvalov | Game Design & System Administration Portfolio",
     description:
-      "Game designer and system administrator portfolio built with Astro and Tailwind CSS.",
+      "Portfolio of Zakhar Samokhvalov, a game designer and system administrator focused on indie games, Linux administration, and frontend craft.",
   },
   localeLabels: {
     ru: "ru",
