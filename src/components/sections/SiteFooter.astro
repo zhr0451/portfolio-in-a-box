@@ -1,0 +1,13 @@
+---
+interface Props {
+  name: string;
+  year: string;
+}
+
+const { name, year } = Astro.props;
+---
+
+<footer class="site-footer">
+  <p>{name}</p>
+  <p>{year}</p>
+</footer>

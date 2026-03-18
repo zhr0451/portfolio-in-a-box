@@ -1,151 +1,29 @@
 ---
-import ActionButton from "../components/ActionButton.astro";
+import AvailabilityBar from "../components/sections/AvailabilityBar.astro";
+import EducationSection from "../components/sections/EducationSection.astro";
+import ExperienceSection from "../components/sections/ExperienceSection.astro";
+import HeroSection from "../components/sections/HeroSection.astro";
+import ProjectsSection from "../components/sections/ProjectsSection.astro";
+import SiteFooter from "../components/sections/SiteFooter.astro";
+import SkillsSection from "../components/sections/SkillsSection.astro";
 import { site } from "../data/site";
 import BaseLayout from "../layouts/BaseLayout.astro";
-
-const localeOptions = ["ru", "en"] as const;
-const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={site.meta.title} description={site.meta.description} locale="en">
   <main class="portfolio-shell">
-    <section class="panel hero-panel">
-      <div class="photo-card">
-        <img src={`${baseUrl}${site.person.photo}`} alt="Portrait of Zakhar Samokhvalov" loading="eager" decoding="async" />
-      </div>
-      <div class="hero-content">
-        <div class="panel-heading">
-          <p class="section-kicker">
-            <span data-lang-content="en">{site.hero.greeting.en}</span>
-            <span data-lang-content="ru">{site.hero.greeting.ru}</span>
-          </p>
-          <div class="locale-switch" aria-label="Language switch">
-            {
-              localeOptions.map((locale, index) => (
-                <>
-                  {index > 0 && <span class="locale-divider">/</span>}
-                  <button
-                    class={`locale-option${locale === "en" ? " is-active" : ""}`}
-                    type="button"
-                    data-switch-lang={locale}
-                    aria-pressed={locale === "en" ? "true" : "false"}
-                  >
-                    {site.localeLabels[locale]}
-                  </button>
-                </>
-              ))
-            }
-          </div>
-        </div>
-
-        <p class="hero-lead">
-          <span data-lang-content="en">{site.hero.intro.en}</span>
-          <span data-lang-content="ru">{site.hero.intro.ru}</span>
-        </p>
-
-        <p class="hero-summary">
-          <span data-lang-content="en">{site.person.summary.en}</span>
-          <span data-lang-content="ru">{site.person.summary.ru}</span>
-        </p>
-
-        <div class="action-row" aria-label="Contact and platform buttons">
-          {site.actions.map((action) => <ActionButton {...action} />)}
-        </div>
-      </div>
-    </section>
-
-    {
-      site.experiences.map((experience) => (
-        <section class="panel experience-panel">
-          <div class="panel-heading">
-            <p class="section-title">
-              <span data-lang-content="en">{experience.label.en}</span>
-              <span data-lang-content="ru">{experience.label.ru}</span>
-            </p>
-            <p class="section-meta">
-              <span data-lang-content="en">{experience.role.en}</span>
-              <span data-lang-content="ru">{experience.role.ru}</span>
-            </p>
-          </div>
-          <div class="inner-panel experience-row">
-            <p class="experience-place">{experience.place}</p>
-            <p class="experience-period">{experience.period}</p>
-          </div>
-        </section>
-      ))
-    }
-
-    <section class="panel skills-panel">
-      <p class="section-title">
-        <span data-lang-content="en">Skills</span>
-        <span data-lang-content="ru">Навыки</span>
-      </p>
-      <div class="skills-grid">
-        {
-          site.skillGroups.map((group) => (
-            <article class="inner-panel skill-card">
-              <h2>
-                <span data-lang-content="en">{group.title.en}</span>
-                <span data-lang-content="ru">{group.title.ru}</span>
-              </h2>
-              <ul class="skill-list">
-                {group.items.map((item) => <li>{item}</li>)}
-              </ul>
-            </article>
-          ))
-        }
-      </div>
-    </section>
-
-    {
-      site.projectGroups.map((group) => (
-        <section class="panel project-panel">
-          <p class="section-title">
-            <span data-lang-content="en">{group.title.en}</span>
-            <span data-lang-content="ru">{group.title.ru}</span>
-          </p>
-          <div class="inner-panel project-list">
-            {group.items.map((item) => (
-              <article class="project-row">
-                <div class="project-copy">
-                  <h2>{item.name}</h2>
-                  <p>
-                    <span data-lang-content="en">{item.description.en}</span>
-                    <span data-lang-content="ru">{item.description.ru}</span>
-                  </p>
-                </div>
-                {
-                  item.href ? (
-                    <a class="project-link" href={item.href} target="_blank" rel="noreferrer">
-                      <span data-lang-content="en">{site.common.link.en}</span>
-                      <span data-lang-content="ru">{site.common.link.ru}</span>
-                    </a>
-                  ) : (
-                    <span class="project-link is-disabled" aria-hidden="true">
-                      <span data-lang-content="en">{site.common.link.en}</span>
-                      <span data-lang-content="ru">{site.common.link.ru}</span>
-                    </span>
-                  )
-                }
-              </article>
-            ))}
-          </div>
-        </section>
-      ))
-    }
-
-    <section class="availability-bar">
-      <p>
-        <span data-lang-content="en">{site.person.availability.en}</span>
-        <span data-lang-content="ru">{site.person.availability.ru}</span>
-      </p>
-      <span class="availability-dot" aria-hidden="true"></span>
-    </section>
-
-    <footer class="site-footer">
-      <p>{site.person.name}</p>
-      <p>{site.person.footerYear}</p>
-    </footer>
+    <HeroSection
+      person={site.person}
+      hero={site.hero}
+      localeLabels={site.localeLabels}
+      actions={site.actions}
+    />
+    <ExperienceSection items={site.experiences} />
+    <EducationSection items={site.education} />
+    <SkillsSection groups={site.skillGroups} />
+    <ProjectsSection groups={site.projectGroups} />
+    <AvailabilityBar availability={site.person.availability} />
+    <SiteFooter name={site.person.name} year={site.person.footerYear} />
   </main>
 
   <script is:inline>

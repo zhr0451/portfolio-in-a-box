@@ -9,6 +9,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "preview:ci": "astro preview --host 127.0.0.1 --port 4173",
+    "test": "pnpm build && playwright test",
+    "test:e2e": "playwright test",
     "astro": "astro"
   },
   "dependencies": {
@@ -16,5 +19,8 @@
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^6.0.5",
     "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
   }
 }

@@ -1,0 +1,20 @@
+---
+interface LocalizedText {
+  en: string;
+  ru: string;
+}
+
+interface Props {
+  availability: LocalizedText;
+}
+
+const { availability } = Astro.props;
+---
+
+<section class="availability-bar">
+  <p>
+    <span data-lang-content="en">{availability.en}</span>
+    <span data-lang-content="ru">{availability.ru}</span>
+  </p>
+  <span class="availability-dot" aria-hidden="true"></span>
+</section>

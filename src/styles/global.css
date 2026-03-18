@@ -1,37 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Space Mono";
-  src: url("../fonts/SpaceMono-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Space Mono";
-  src: url("../fonts/SpaceMono-Italic.ttf") format("truetype");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Space Mono";
-  src: url("../fonts/SpaceMono-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Space Mono";
-  src: url("../fonts/SpaceMono-BoldItalic.ttf") format("truetype");
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
 :root {
   color-scheme: dark;
   --bg: #101010;
@@ -168,6 +136,10 @@ a {
   color: var(--text);
 }
 
+.hero-lead {
+  color: var(--text);
+}
+
 .action-row {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -265,10 +237,15 @@ a {
   gap: 0.75rem;
 }
 
-.experience-panel .panel-heading,
+.experience-panel > .section-title,
 .skills-panel > .section-title,
-.project-panel > .section-title {
+.projects-panel > .section-title {
   margin-bottom: 0.75rem;
+}
+
+.experience-list {
+  display: grid;
+  gap: 0.75rem;
 }
 
 .experience-row {
@@ -296,7 +273,16 @@ a {
   gap: 0.75rem;
 }
 
+.projects-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
 .skill-card {
+  padding: 1rem;
+}
+
+.project-card {
   padding: 1rem;
 }
 
@@ -314,50 +300,54 @@ a {
 }
 
 .project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.85rem 0 0;
   display: grid;
   gap: 0.85rem;
-  padding: 0.95rem;
 }
 
-.project-row {
+.project-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 0.75rem;
-  align-items: center;
+  gap: 0.25rem;
 }
 
-.project-copy p {
-  margin-top: 0.25rem;
-  font-size: 0.75rem;
+.project-item + .project-item {
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
 }
 
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 6rem;
-  padding: 0.7rem 1.35rem;
-  border-radius: var(--radius-pill);
-  background: var(--accent-soft);
-  color: #111111;
-  font-size: 0.95rem;
+.project-card h2,
+.project-name {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.98rem;
+  font-weight: 400;
+}
+
+.project-name {
   transition:
-    transform 160ms ease,
+    color 160ms ease,
     opacity 160ms ease;
 }
 
-.project-link:hover,
-.project-link:focus-visible {
-  transform: translateY(-0.1rem);
+.project-name:hover,
+.project-name:focus-visible {
+  color: var(--accent-soft);
 }
 
-.project-link:focus-visible {
-  outline: 2px solid var(--text-strong);
-  outline-offset: 0.15rem;
+.project-name:focus-visible {
+  outline: none;
 }
 
-.project-link.is-disabled {
+.project-name.is-disabled {
   opacity: 0.78;
+}
+
+.project-item p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted);
 }
 
 .availability-bar {
@@ -397,11 +387,11 @@ html[data-lang="ru"] [data-lang-content="ru"] {
 .section-title [data-lang-content],
 .section-meta [data-lang-content],
 .availability-bar p [data-lang-content],
-.project-link [data-lang-content],
-.project-copy p [data-lang-content],
+.project-item p [data-lang-content],
 .hero-lead [data-lang-content],
 .hero-summary [data-lang-content],
-.skill-card h2 [data-lang-content] {
+.skill-card h2 [data-lang-content],
+.project-card h2 [data-lang-content] {
   display: none;
 }
 
@@ -413,16 +403,16 @@ html[data-lang="en"] .section-meta [data-lang-content="en"],
 html[data-lang="ru"] .section-meta [data-lang-content="ru"],
 html[data-lang="en"] .availability-bar p [data-lang-content="en"],
 html[data-lang="ru"] .availability-bar p [data-lang-content="ru"],
-html[data-lang="en"] .project-link [data-lang-content="en"],
-html[data-lang="ru"] .project-link [data-lang-content="ru"],
-html[data-lang="en"] .project-copy p [data-lang-content="en"],
-html[data-lang="ru"] .project-copy p [data-lang-content="ru"],
+html[data-lang="en"] .project-item p [data-lang-content="en"],
+html[data-lang="ru"] .project-item p [data-lang-content="ru"],
 html[data-lang="en"] .hero-lead [data-lang-content="en"],
 html[data-lang="ru"] .hero-lead [data-lang-content="ru"],
 html[data-lang="en"] .hero-summary [data-lang-content="en"],
 html[data-lang="ru"] .hero-summary [data-lang-content="ru"],
 html[data-lang="en"] .skill-card h2 [data-lang-content="en"],
-html[data-lang="ru"] .skill-card h2 [data-lang-content="ru"] {
+html[data-lang="ru"] .skill-card h2 [data-lang-content="ru"],
+html[data-lang="en"] .project-card h2 [data-lang-content="en"],
+html[data-lang="ru"] .project-card h2 [data-lang-content="ru"] {
   display: inline;
 }
 
@@ -448,6 +438,10 @@ html[data-lang="ru"] .skill-card h2 [data-lang-content="ru"] {
   }
 
   .skills-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

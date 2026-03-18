@@ -1,0 +1,59 @@
+---
+interface LocalizedText {
+  en: string;
+  ru: string;
+}
+
+interface ProjectItem {
+  name: string;
+  description: LocalizedText;
+  href?: string;
+}
+
+interface ProjectGroup {
+  title: LocalizedText;
+  items: readonly ProjectItem[];
+}
+
+interface Props {
+  groups: readonly ProjectGroup[];
+}
+
+const { groups } = Astro.props;
+---
+
+<section class="panel projects-panel">
+  <p class="section-title">
+    <span data-lang-content="en">Projects</span>
+    <span data-lang-content="ru">Проекты</span>
+  </p>
+  <div class="projects-grid">
+    {
+      groups.map((group) => (
+        <article class="inner-panel project-card">
+          <h2>
+            <span data-lang-content="en">{group.title.en}</span>
+            <span data-lang-content="ru">{group.title.ru}</span>
+          </h2>
+          <ul class="project-list">
+            {group.items.map((item) => (
+              <li class="project-item">
+                {item.href ? (
+                  <a class="project-name" href={item.href} target="_blank" rel="noreferrer">
+                    {item.name}
+                  </a>
+                ) : (
+                  <span class="project-name is-disabled">{item.name}</span>
+                )}
+                <p>
+                  <span data-lang-content="en">{item.description.en}</span>
+                  <span data-lang-content="ru">{item.description.ru}</span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</section>
