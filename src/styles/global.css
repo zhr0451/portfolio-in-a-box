@@ -219,9 +219,9 @@ a {
 
 .hero-panel {
   display: grid;
-  grid-template-columns: 8.75rem minmax(0, 1fr);
+  grid-template-columns: 6.5rem minmax(0, 1fr);
   gap: 0.8rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 .photo-card,
@@ -234,6 +234,7 @@ a {
 .photo-card {
   padding: 0.25rem;
   display: flex;
+  align-self: start;
 }
 
 .photo-card img {
@@ -250,6 +251,7 @@ a {
   display: grid;
   align-content: start;
   gap: 0.75rem;
+  min-width: 0;
 }
 
 .experience-panel > .section-title,
