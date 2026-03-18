@@ -1,0 +1,29 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: "ru" | "en";
+}
+
+const {
+  title = "zhr | Portfolio",
+  description = "A compact portfolio built with Astro and Tailwind CSS.",
+  locale = "en",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={locale} data-lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/media/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
