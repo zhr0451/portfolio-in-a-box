@@ -8,6 +8,7 @@ interface Props {
 const { label, href = "", asset } = Astro.props;
 const isLink = href.trim().length > 0;
 const openInNewTab = href.startsWith("http");
+const assetSrc = `${import.meta.env.BASE_URL}${asset}`;
 ---
 
 <div class="action-card">
@@ -21,12 +22,12 @@ const openInNewTab = href.startsWith("http");
         target={openInNewTab ? "_blank" : undefined}
         rel={openInNewTab ? "noreferrer" : undefined}
       >
-        <img src={asset} alt="" aria-hidden="true" loading="lazy" decoding="async" />
+        <img src={assetSrc} alt="" aria-hidden="true" loading="lazy" decoding="async" />
         <span class="sr-only">{label}</span>
       </a>
     ) : (
       <span class="action-button is-disabled" aria-hidden="true" title={`${label} link is not public yet`}>
-        <img src={asset} alt="" loading="lazy" decoding="async" />
+        <img src={assetSrc} alt="" loading="lazy" decoding="async" />
       </span>
     )
   }
