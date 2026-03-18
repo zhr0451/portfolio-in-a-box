@@ -2,7 +2,7 @@
 
 ## Назначение
 
-Проект — это одностраничное портфолио на Astro. Текущая реализация близка к Astro-конвенциям: маршруты лежат в `src/pages`, layout вынесен в `src/layouts`, переиспользуемая кнопка лежит в `src/components`, а контент хранится отдельно в `src/data`.
+Проект представляет собой одностраничное портфолио на Astro. Текущая реализация близка к Astro-конвенциям: маршруты лежат в `src/pages`, layout вынесен в `src/layouts`, переиспользуемая кнопка лежит в `src/components`, а контент хранится отдельно в `src/data`.
 
 ## Структура файлов
 
@@ -32,8 +32,8 @@ tsconfig.json
 
 ## Как работает страница
 
-1. [src/pages/index.astro](/d:/code/web/portfolio/src/pages/index.astro) импортирует layout, данные и кнопку действий.
-2. Страница читает объект `site` из [src/data/site.ts](/d:/code/web/portfolio/src/data/site.ts) и маппит его в секции:
+1. [src/pages/index.astro](/d:/code/web/portfolio/src/pages/index.astro) импортирует layout, данные и секционные компоненты.
+2. Страница читает объект `site` из [src/data/site.ts](/d:/code/web/portfolio/src/data/site.ts) и передаёт его части в секции:
    - hero
    - experience
    - education
@@ -47,29 +47,29 @@ tsconfig.json
    - canonical URL
    - favicon
    - inline `@font-face`
-4. [src/components/ActionButton.astro](/d:/code/web/portfolio/src/components/ActionButton.astro) рендерит одну иконку-ссылку.
-5. [src/styles/global.css](/d:/code/web/portfolio/src/styles/global.css) задает токены, сетки, карточки, типографику и переключение языковых фрагментов.
+4. Секционные компоненты рендерят соответствующие блоки страницы, а [src/components/ActionButton.astro](/d:/code/web/portfolio/src/components/ActionButton.astro) выводит одну иконку-ссылку.
+5. [src/styles/global.css](/d:/code/web/portfolio/src/styles/global.css) задаёт токены, сетки, карточки, типографику и переключение языковых фрагментов.
 
 ## Поток данных
 
 Сейчас поток данных простой и прямой:
 
 - `site.ts` хранит весь контент страницы
-- `index.astro` берет данные и рендерит HTML
+- `index.astro` берёт данные и собирает страницу из секций
 - `ActionButton.astro` получает часть данных через props
 - язык `ru/en` переключается на клиенте через `localStorage` и `data-lang` на `<html>`
 
-Это удобно для маленького сайта, но при росте контента у файла `site.ts` быстро появится слишком много ответственности.
+Это удобно для небольшого сайта, но при росте контента у файла `site.ts` быстро появится слишком много ответственности.
 
 ## Стили и ассеты
 
 ### Стили
 
-- Tailwind подключен в [astro.config.mjs](/d:/code/web/portfolio/astro.config.mjs), но проект опирается в основном на обычный CSS в [src/styles/global.css](/d:/code/web/portfolio/src/styles/global.css)
+- Tailwind подключён в [astro.config.mjs](/d:/code/web/portfolio/astro.config.mjs), но проект в основном опирается на обычный CSS в [src/styles/global.css](/d:/code/web/portfolio/src/styles/global.css)
 - Сейчас `global.css` содержит:
-  - design tokens в `:root`
+  - дизайн-токены в `:root`
   - базовые стили
-  - layout классы
+  - layout-классы
   - стили конкретных секций
   - правила локализации
 
@@ -78,8 +78,8 @@ tsconfig.json
 ### Ассеты
 
 - Кнопки, фото и favicon лежат в `public/`
-- шрифты тоже лежат в `public/fonts`
-- пути к публичным ассетам строятся через `import.meta.env.BASE_URL`, что важно из-за `base: "/portfolio-in-a-box/"`
+- Шрифты тоже лежат в `public/fonts`
+- Пути к публичным ассетам строятся через `import.meta.env.BASE_URL`, что важно из-за `base: "/portfolio-in-a-box/"`
 
 Это рабочая схема для GitHub Pages. Самое чувствительное место здесь — шрифты и любые ассеты, если где-то случайно появится абсолютный путь без учета `BASE_URL`.
 
@@ -112,21 +112,21 @@ Workflow в [.github/workflows/astro.yml](/d:/code/web/portfolio/.github/workflo
 5. загружает `dist` как Pages artifact
 6. деплоит artifact через `actions/deploy-pages`
 
-Итог: build/deploy flow уже оформлен корректно для GitHub Pages.
+Итог: процесс сборки и деплоя уже оформлен корректно для GitHub Pages.
 
 ## Оценка относительно Astro-конвенций
 
 Что уже сделано хорошо:
 
 - layout вынесен отдельно
-- UI-компонент лежит вне `src/pages`
+- Интерфейсный компонент лежит вне `src/pages`
 - данные лежат отдельно от шаблона
 - `base` и `site` заданы явно
 - проект остается статическим и простым
 
 Что пока перегружено:
 
-- [src/pages/index.astro](/d:/code/web/portfolio/src/pages/index.astro) хранит слишком много секционной разметки
+- [src/pages/index.astro](/d:/code/web/portfolio/src/pages/index.astro) всё ещё хранит часть логики композиции страницы
 - [src/data/site.ts](/d:/code/web/portfolio/src/data/site.ts) стал единым контейнером для всех типов контента
 - [src/styles/global.css](/d:/code/web/portfolio/src/styles/global.css) совмещает reset, tokens, layout и стили конкретных блоков
 - inline-скрипт переключения языка живет прямо в странице
@@ -137,7 +137,7 @@ Workflow в [.github/workflows/astro.yml](/d:/code/web/portfolio/.github/workflo
 Если нужно добавить новую секцию без рефакторинга:
 
 1. добавить данные в `src/data/site.ts`
-2. отрендерить секцию в `src/pages/index.astro`
+2. отрендерить или обновить нужную секцию в компоненте страницы
 3. дописать стили в `src/styles/global.css`
 4. если есть новые публичные ассеты, положить их в `public/`
 
@@ -164,7 +164,7 @@ Workflow в [.github/workflows/astro.yml](/d:/code/web/portfolio/.github/workflo
 
 ### Этап 2. Разделить данные по доменам
 
-Вместо одного большого `site.ts` сделать, например:
+Вместо одного большого `site.ts` можно сделать, например:
 
 - `src/data/site.ts` — meta, person, locale labels
 - `src/data/actions.ts`
@@ -208,7 +208,7 @@ Workflow в [.github/workflows/astro.yml](/d:/code/web/portfolio/.github/workflo
 - добавить slug, tags, dates, links, cover
 - при необходимости завести отдельные страницы проектов
 
-Это будет уже более типичный Astro-подход для контентного сайта.
+Это будет уже более типичный для Astro подход к контентному сайту.
 
 ## Практический вывод
 

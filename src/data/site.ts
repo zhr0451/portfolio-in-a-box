@@ -20,22 +20,22 @@ export const site = {
       ru: "привет",
     },
     intro: {
-      en: "My name is Zakhar, I'm game designer & system administrator with a focus on indie game design and linux administration.",
-      ru: "Меня зовут Захар, я гейм-дизайнер и системный администратор с фокусом на инди-игры и linux-администрирование.",
+      en: "My name is Zakhar. I'm a game designer and system administrator focused on indie game design and Linux administration.",
+      ru: "Меня зовут Захар. Я гейм-дизайнер и системный администратор, специализирующийся на разработке инди-игр и администрировании Linux.",
     },
   },
   person: {
     name: "Zakhar Samokhvalov",
     summary: {
-      en: "I'm a student game designer currently working as a system administrator. In my free time, I play TTRPGs, do extreme sports, and learn DevOps.",
-      ru: "Я студент-геймдизайнер, который сейчас работает системным администратором. В свободное время играю в НРИ, занимаюсь экстремальным спортом и изучаю DevOps.",
+      en: "I'm a student game designer currently working as a system administrator. In my free time, I play TTRPGs, study computer science, and work on pet projects.",
+      ru: "Я студент-геймдизайнер, который сейчас работает системным администратором. В свободное время я играю в НРИ, изучаю компьютерные науки и занимаюсь pet-проектами.",
     },
     photo: "media/photo_2026-03-15_19-53-33.jpg",
     availability: {
       en: "Currently available for hire",
       ru: "Сейчас открыт для предложений",
     },
-    footerYear: "2026",
+    footerYear: "Самохвалов Захар – 2026",
   },
   actions: [
     { label: "GitHub", href: "https://github.com/zhr0451", asset: "buttons/GitHub Button.svg" },
@@ -89,16 +89,16 @@ export const site = {
         {
           name: "Gather your friends!",
           description: {
-            en: "Game for Ludum Dare",
-            ru: "Игра для Ludum Dare",
+            en: "A game made for Ludum Dare in Unity 3D.",
+            ru: "Игра, созданная для Ludum Dare на Unity 3D.",
           },
           href: "https://ldjam.com/events/ludum-dare/58/gather-your-friends",
         },
         {
           name: "CyberBANG!",
           description: {
-            en: 'Reskin for the "Bang!" game.',
-            ru: 'Рескин для игры "Bang!".',
+            en: 'A reskin of the game "Bang!".',
+            ru: 'Рескин игры "Bang!".',
           },
           href: "https://svaika-games.itch.io/cyberbang",
         },

@@ -6,11 +6,11 @@ test.describe("portfolio smoke", () => {
 
     await expect(page).toHaveTitle(/Zakhar Samokhvalov/);
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
-    await expect(page.getByText("welcome")).toBeVisible();
-    await expect(page.getByText("Experience")).toBeVisible();
-    await expect(page.getByText("Education")).toBeVisible();
-    await expect(page.getByText("Projects")).toBeVisible();
-    await expect(page.getByText("Currently available for hire")).toBeVisible();
+    await expect(page.getByText("welcome", { exact: true })).toBeVisible();
+    await expect(page.getByText("Experience", { exact: true })).toBeVisible();
+    await expect(page.getByText("Education", { exact: true })).toBeVisible();
+    await expect(page.getByText("Projects", { exact: true })).toBeVisible();
+    await expect(page.getByText("Currently available for hire", { exact: true })).toBeVisible();
   });
 
   test("serves hero and social assets from the configured base path", async ({ page }) => {
@@ -35,14 +35,14 @@ test.describe("portfolio smoke", () => {
     await ruSwitch.click();
 
     await expect(page.locator("html")).toHaveAttribute("lang", "ru");
-    await expect(page.getByText("привет")).toBeVisible();
-    await expect(page.getByText("Опыт")).toBeVisible();
-    await expect(page.getByText("Сейчас открыт для предложений")).toBeVisible();
+    await expect(page.getByText("привет", { exact: true })).toBeVisible();
+    await expect(page.getByText("Опыт", { exact: true })).toBeVisible();
+    await expect(page.getByText("Сейчас открыт для предложений", { exact: true })).toBeVisible();
 
     await page.reload();
 
     await expect(page.locator("html")).toHaveAttribute("lang", "ru");
-    await expect(page.getByText("привет")).toBeVisible();
+    await expect(page.getByText("привет", { exact: true })).toBeVisible();
     await expect(page.locator('[data-switch-lang="ru"]')).toHaveAttribute("aria-pressed", "true");
   });
 });
