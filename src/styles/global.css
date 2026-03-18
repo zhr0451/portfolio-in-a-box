@@ -338,17 +338,28 @@ a {
   color: var(--accent);
   font-size: 0.98rem;
   font-weight: 400;
+  text-decoration-line: underline;
+  text-decoration-color: rgba(107, 115, 95, 0.7);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
 }
 
 .project-name {
   transition:
     color 160ms ease,
+    text-decoration-color 160ms ease,
     opacity 160ms ease;
 }
 
 .project-name:hover,
 .project-name:focus-visible {
   color: var(--accent-soft);
+  text-decoration-color: var(--accent-soft);
+}
+
+.project-name:active {
+  color: var(--text-strong);
+  text-decoration-color: var(--text-strong);
 }
 
 .project-name:focus-visible {
