@@ -1,0 +1,83 @@
+---
+import ActionButton from "../ActionButton.astro";
+
+interface LocalizedText {
+  en: string;
+  ru: string;
+}
+
+interface LocaleLabels {
+  en: string;
+  ru: string;
+}
+
+interface Person {
+  photo: string;
+  summary: LocalizedText;
+}
+
+interface Action {
+  label: string;
+  href?: string;
+  asset: string;
+}
+
+interface Props {
+  person: Person;
+  hero: {
+    greeting: LocalizedText;
+    intro: LocalizedText;
+  };
+  localeLabels: LocaleLabels;
+  actions: readonly Action[];
+}
+
+const { person, hero, localeLabels, actions } = Astro.props;
+const localeOptions = ["ru", "en"] as const;
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<section class="panel hero-panel">
+  <div class="photo-card">
+    <img src={`${baseUrl}${person.photo}`} alt="Portrait of Zakhar Samokhvalov" loading="eager" decoding="async" />
+  </div>
+  <div class="hero-content">
+    <div class="panel-heading">
+      <p class="section-kicker">
+        <span data-lang-content="en">{hero.greeting.en}</span>
+        <span data-lang-content="ru">{hero.greeting.ru}</span>
+      </p>
+      <div class="locale-switch" aria-label="Language switch">
+        {
+          localeOptions.map((locale, index) => (
+            <>
+              {index > 0 && <span class="locale-divider">/</span>}
+              <button
+                class={`locale-option${locale === "en" ? " is-active" : ""}`}
+                type="button"
+                data-switch-lang={locale}
+                aria-pressed={locale === "en" ? "true" : "false"}
+              >
+                {localeLabels[locale]}
+              </button>
+            </>
+          ))
+        }
+      </div>
+    </div>
+
+    <p class="hero-lead">
+      <span data-lang-content="en">{hero.intro.en}</span>
+      <span data-lang-content="ru">{hero.intro.ru}</span>
+    </p>
+
+    <p class="hero-summary">
+      <span data-lang-content="en">{person.summary.en}</span>
+      <span data-lang-content="ru">{person.summary.ru}</span>
+    </p>
+
+    <div class="action-row" aria-label="Contact and platform buttons">
+      {actions.map((action) => <ActionButton {...action} />)}
+    </div>
+  </div>
+</section>

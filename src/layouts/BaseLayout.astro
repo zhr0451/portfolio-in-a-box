@@ -14,10 +14,41 @@ const {
 } = Astro.props;
 
 const baseUrl = import.meta.env.BASE_URL;
+const fontBasePath = `${baseUrl}fonts`;
 const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
 const previewImage = Astro.site
   ? new URL(`${baseUrl}media/photo_2026-03-15_19-53-33.jpg`, Astro.site).href
   : `${baseUrl}media/photo_2026-03-15_19-53-33.jpg`;
+const fontFaceCss = [
+  '@font-face {\n' +
+    '  font-family: "Space Mono";\n' +
+    `  src: url("${fontBasePath}/SpaceMono-Regular.ttf") format("truetype");\n` +
+    "  font-weight: 400;\n" +
+    "  font-style: normal;\n" +
+    "  font-display: swap;\n" +
+    "}",
+  '@font-face {\n' +
+    '  font-family: "Space Mono";\n' +
+    `  src: url("${fontBasePath}/SpaceMono-Italic.ttf") format("truetype");\n` +
+    "  font-weight: 400;\n" +
+    "  font-style: italic;\n" +
+    "  font-display: swap;\n" +
+    "}",
+  '@font-face {\n' +
+    '  font-family: "Space Mono";\n' +
+    `  src: url("${fontBasePath}/SpaceMono-Bold.ttf") format("truetype");\n` +
+    "  font-weight: 700;\n" +
+    "  font-style: normal;\n" +
+    "  font-display: swap;\n" +
+    "}",
+  '@font-face {\n' +
+    '  font-family: "Space Mono";\n' +
+    `  src: url("${fontBasePath}/SpaceMono-BoldItalic.ttf") format("truetype");\n` +
+    "  font-weight: 700;\n" +
+    "  font-style: italic;\n" +
+    "  font-display: swap;\n" +
+    "}",
+].join("\n");
 ---
 
 <!doctype html>
@@ -39,6 +70,7 @@ const previewImage = Astro.site
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={previewImage} />
+    <style is:inline set:html={fontFaceCss}></style>
     <title>{title}</title>
   </head>
   <body>

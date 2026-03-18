@@ -1,0 +1,29 @@
+---
+interface EducationItem {
+  place: string;
+  period: string;
+}
+
+interface Props {
+  items: readonly EducationItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="panel experience-panel">
+  <p class="section-title">
+    <span data-lang-content="en">Education</span>
+    <span data-lang-content="ru">Образование</span>
+  </p>
+  <div class="experience-list">
+    {
+      items.map((education) => (
+        <div class="inner-panel experience-row">
+          <p class="experience-place">{education.place}</p>
+          <p class="experience-period">{education.period}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

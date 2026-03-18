@@ -20,7 +20,7 @@ export const site = {
       ru: "привет",
     },
     intro: {
-      en: "My name is Zakhar, I'm game designer & system administrator with a focus on indie-game design and linux administration.",
+      en: "My name is Zakhar, I'm game designer & system administrator with a focus on indie game design and linux administration.",
       ru: "Меня зовут Захар, я гейм-дизайнер и системный администратор с фокусом на инди-игры и linux-администрирование.",
     },
   },
@@ -49,27 +49,17 @@ export const site = {
   ],
   experiences: [
     {
-      label: {
-        en: "Experience",
-        ru: "Опыт",
-      },
-      role: {
-        en: "System Administrator",
-        ru: "Системный администратор",
-      },
       place: "ComeForte",
       period: "2024 - now",
     },
     {
-      label: {
-        en: "Experience",
-        ru: "Опыт",
-      },
-      role: {
-        en: "Game Designer",
-        ru: "Гейм-дизайнер",
-      },
       place: "ITHub",
+      period: "2025 - now",
+    },
+  ],
+  education: [
+    {
+      place: "ITHub – Game Design",
       period: "2025 - now",
     },
   ],
@@ -102,7 +92,7 @@ export const site = {
             en: "Game for Ludum Dare",
             ru: "Игра для Ludum Dare",
           },
-          href: "",
+          href: "https://ldjam.com/events/ludum-dare/58/gather-your-friends",
         },
         {
           name: "CyberBANG!",
@@ -110,7 +100,7 @@ export const site = {
             en: 'Reskin for the "Bang!" game.',
             ru: 'Рескин для игры "Bang!".',
           },
-          href: "",
+          href: "https://svaika-games.itch.io/cyberbang",
         },
       ],
     },
@@ -126,7 +116,7 @@ export const site = {
             en: "Web project work for ComeForte.",
             ru: "Веб-проект для ComeForte.",
           },
-          href: "",
+          href: "http://test.comeforte24.ru/",
         },
       ],
     },
