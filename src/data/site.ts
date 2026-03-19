@@ -35,7 +35,7 @@ export const site = {
       en: "Currently available for hire",
       ru: "Сейчас открыт для предложений",
     },
-    footerYear: "Самохвалов Захар – 2026",
+    footerYear: "2026",
   },
   actions: [
     { label: "GitHub", href: "https://github.com/zhr0451", asset: "buttons/GitHub Button.svg" },
