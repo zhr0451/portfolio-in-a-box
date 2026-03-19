@@ -16,18 +16,20 @@ interface Props {
 const { groups } = Astro.props;
 ---
 
+<!-- cspell:words Гейм Системное администрирование -->
+
 <section class="panel skills-panel">
   <p class="section-title">
-    <span data-lang-content="en">Skills</span>
-    <span data-lang-content="ru">Навыки</span>
+    <span lang="en" data-lang-content="en">Skills</span>
+    <span lang="ru" data-lang-content="ru">Навыки</span>
   </p>
   <div class="skills-grid">
     {
       groups.map((group) => (
         <article class="inner-panel skill-card">
           <h2>
-            <span data-lang-content="en">{group.title.en}</span>
-            <span data-lang-content="ru">{group.title.ru}</span>
+            <span lang="en" data-lang-content="en">{group.title.en}</span>
+            <span lang="ru" data-lang-content="ru">{group.title.ru}</span>
           </h2>
           <ul class="skill-list">
             {group.items.map((item) => <li>{item}</li>)}
