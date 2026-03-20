@@ -69,14 +69,14 @@ export const site = {
         en: "Game Design",
         ru: "Гейм-дизайн",
       },
-      items: ["Git", "Godot", "Unity", "GDScript", "C#", "Markdown", "Google Docs", "Documentation"],
+      items: ["Git", "Godot", "Unity", "GDScript", "C# (basics)", "Markdown", "Google Docs", "Documentation"],
     },
     {
       title: {
         en: "System Administration",
         ru: "Системное администрирование",
       },
-      items: ["Linux", "Windows", "GitLab CI", "CRM", "GitHub Actions", "IP telephony", "Docker", "Python"],
+      items: ["Linux", "Windows", "GitLab CI", "CRM", "GitHub Actions", "IP telephony", "Docker", "Python (basics)"],
     },
   ],
   projectGroups: [
